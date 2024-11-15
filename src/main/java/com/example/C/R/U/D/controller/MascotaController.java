@@ -13,4 +13,11 @@ import java.util.List;
 @RequestMapping("/api")
 public class MascotaController {
 
+    @Autowired
+    private IMascotaService mascotaService;
+
+    @GetMapping("/mascotas")
+    private List<MascotaDto> getMascotas(){
+        return mascotaService.getMascotas();
+    }
 }

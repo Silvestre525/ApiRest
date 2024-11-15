@@ -6,7 +6,5 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface IMascotaService {
-    public List<Mascota> getMascotas();
-
-
+    public List<MascotaDto> getMascotas();
 }

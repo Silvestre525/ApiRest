@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MascotaService implements IMascotaService {
@@ -16,10 +17,22 @@ public class MascotaService implements IMascotaService {
     private IMascotaRepository mascoRepo;
 
     @Override
-    public List<Mascota> getMascotas() {
-        List<Mascota> mascotas = (List<Mascota>) mascoRepo.findAll();
-        return mascotas;
-    }
+    public List<MascotaDto> getMascotas(){
 
+        //Traer todas las mascotas del repository
+        List<Mascota> mascotas = mascoRepo.findAll();
+
+        //Convertir todas esa lista de mascotas a MascotasDTO
+        List<MascotaDto> mascotasDTOS = mascotas.stream()
+                .map(mascota -> {
+                    MascotaDto dto = new MascotaDto();
+                    dto.setNombre(mascota.getNombre());
+                    dto.setEdad(mascota.getEdad());
+                    return dto;
+                }).collect(Collectors.toList());   //guarda todo en una lista
+
+        return mascotasDTOS;
+
+    }
 
 }
