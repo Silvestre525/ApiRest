@@ -1,14 +1,12 @@
 package com.example.C.R.U.D.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter @Setter
+@Table(name = "coche")
 public class Coche{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -25,4 +23,8 @@ public class Coche{
         this.modelo = modelo;
         this.color = color;
     }
+
+    @ManyToOne()
+    @JoinColumn(name = "id_personas")
+    private Persona persona;
 }

@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter @Setter
+@Table(name = "persona")
 public class Persona{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -23,4 +26,7 @@ public class Persona{
         this.edad = edad;
 
     }
+
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Coche> coches;
 }
