@@ -1,14 +1,12 @@
 package com.example.C.R.U.D.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter @Setter
+@Table(name = "mascota")
 public class Mascota{
 
     //Atributos
@@ -29,4 +27,7 @@ public class Mascota{
         this.edad = edad;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "id_persona")
+    private Persona persona;
 }
