@@ -7,25 +7,22 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Getter @Setter
-public class Mascota{
-
-    //Atributos
+public class Coche{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private String nombre;
-    private String raza;
-    private Integer edad;
+    private String marca;
+    private Integer modelo;
+    private String color;
 
-    //Metodos
-    public Mascota(){
+    public Coche(){
+
     }
-
-    public Mascota(String nombre, String raza, Integer edad){
-        this.nombre = nombre;
-        this.raza = raza;
-        this.edad = edad;
+    public Coche(String marca, Integer modelo, String color){
+        this.marca = marca;
+        this.modelo = modelo;
+        this.color = color;
     }
-
 }

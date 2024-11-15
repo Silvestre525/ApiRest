@@ -6,12 +6,21 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter
-public class Persona {
+public class Persona{
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String nombre;
     private String apellido;
-    private int edad;
+    private Integer edad;
 
+    public Persona(){
+    }
+
+    public Persona(String nombre, String apellido, Integer edad){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+
+    }
 }

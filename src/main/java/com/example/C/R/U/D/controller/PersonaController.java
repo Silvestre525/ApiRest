@@ -8,6 +8,7 @@ import com.example.C.R.U.D.model.Persona;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class PersonaController {
     @Autowired
     private IPersonaService personServi;

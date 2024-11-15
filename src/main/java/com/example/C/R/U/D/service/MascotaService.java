@@ -22,47 +22,4 @@ public class MascotaService implements IMascotaService {
     }
 
 
-    @Override
-    public List<Mascota> getMascotasByEspecie(String especie) {
-        // Utiliza la consulta personalizada
-        return mascoRepo.findMascotasByEspecie(especie);
-    }
-
-    @Override
-    public ResponseEntity<MascotaDto> postMascotas(MascotaDto mascotaDTO) {
-        Mascota mascota = new Mascota();
-        mascota.setNombre(mascotaDTO.getNombre());
-        mascota.setEspecie(mascotaDTO.getEspecie());
-        mascota.setRaza(mascotaDTO.getRaza());
-        mascota.setColor(mascotaDTO.getColor());
-        Mascota savedMascota = mascoRepo.save(mascota);
-        MascotaDto savedMascotaDTO = new MascotaDto(savedMascota);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedMascotaDTO);
-    }
-
-    @Override
-    public void deleteMascotas(Long id){
-        mascoRepo.deleteById(id);
-    }
-
-    @Override
-    public Mascota findMascota(Long id) {
-        Mascota masco = mascoRepo.findById(id).orElse(null);
-        return masco;
-    }
-
-    @Override
-    public void editMascota(Long idNueva, String nuevoNombre){
-        Mascota mascota = this.findMascota(idNueva);
-
-        mascota.setNombre(nuevoNombre);
-
-        mascoRepo.save(mascota);
-
-
-    }
-
-
-
-
 }
